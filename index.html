@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="functions.js"></script>
+    <title>Criptografia RSA</title>
+  </head>
+  <body>
+    <h1>Criptografia RSA</h1>
+    <p>Informe dois números primos (P e Q):</p>
+    <label for="p-input" >P:</label>
+    <input type="text" id="p-input"/>
+
+    <p></p>
+    <label for="q-input">Q:</label>
+    <input type="text" id="q-input"/>
+
+    <p>Escreva uma mensagem para criptografar:</p>
+    <textarea class="textarea" id="mensagem"></textarea>
+
+    <p></p>
+    <button class="botao" onclick="verificarPrimos()">Criptograr</button>
+    <p id="encrypted"></p>
+
+    <div id="campo1" style="display: none">
+      <label for="public-input">Chave pública:</label>
+      <input type="text" id="campo1-input" />
+    </div>
+
+    <div id="campo2" style="display: none">
+      <label for="private-input">Chave privada:</label>
+      <input type="text" id="campo2-input" />
+    </div>
+
+  </body>
+</html>
