@@ -1,3 +1,11 @@
+let chave_publica = [0,0]
+let chave_privada = [0,0]
+
+const p = document.getElementById("campo1-input").value;
+const q = document.getElementById("campo1-input").value;
+const mensagem = document.getElementById("mensagem").value;
+
+
 function isPrime(num) {
   if (num <= 1) {
     return false;
@@ -36,50 +44,16 @@ function gerar_chaves(p,q){
     }
   }
   
-  return [[e, n], [d, n]];
+  return [[e,n],[d,n]]
 
 }
 
-
-
-
-
-
-
-
-
-
-/*
-function verificarPrimos() {
-  const p = parseInt(document.getElementById("p-input").value);
-  const q = parseInt(document.getElementById("q-input").value);
-
-  let ehPrimoP = true;
-  let ehPrimoQ = true;
-
-  for (let i = 2; i < p; i++) {
-    if (p % i === 0) {
-      ehPrimoP = false;
-      break;
-    }
-  }
-
-  for (let i = 2; i < q; i++) {
-    if (q % i === 0) {
-      ehPrimoQ = false;
-      break;
-    }
-  }
-
-  if (ehPrimoP && ehPrimoQ && p > 1 && q > 1) {
-    MostrarCampos();
-  } else {
-    alert("p = " + p + " e q = " + q + " não são primos!");
-  }
+function encrypt(message, publicKey) {
+  const [e, n] = publicKey;
+  const encrypted = message.split('').map(char => BigInt(char.charCodeAt(0)) ** BigInt(e) % BigInt(n));
+  return encrypted;
 }
 
-function MostrarCampos() {
-  document.getElementById("campo1").style.display = "block";
-  document.getElementById("campo2").style.display = "block";
-}
-*/
+let public_key, private_key = gerar_chaves(p, q)
+
+let encrypted_message = encrypt(message, public_key)
